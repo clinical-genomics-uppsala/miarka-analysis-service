@@ -51,7 +51,11 @@ docker run --name miarka-analysis-service \
 -v ./scripts:/opt/miarka-analysis-service/scripts \
 -d -p 8080:8080 miarka-analysis-service:latest
 ```
-(To see the service log, omit the -d-flag.)
+To see the service log, omit the -d-flag or re-direct the container to a log-file using the command below. This command will write all existing  and future log messages to the file  miarka-analysis-ws.log.
+
+```
+docker logs -f miarka-analysis-service &> miarka-analysis-ws.log &
+```
 
 Use `docker inspect` to find the IP of your running container to use in the commands below.
 
