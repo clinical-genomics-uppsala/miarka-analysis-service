@@ -61,8 +61,14 @@ Use `docker inspect` to find the IP of your running container to use in the comm
 
 ```
 
-curl http://172.17.0.2:8080/api/1.0/version
+curl http://<container IP>:8080/api/1.0/version
 
 curl -X POST -w '\n' --data '{"wp": "wp1", "analysis": "GMS560", "inbox_path": "/path/to/inbox/"}' \
-http://172.17.0.2:8080/api/1.0/start
+http://<container IP>:8080/api/1.0/start
+```
+
+Set-up using docker-compose
+-------------
+```
+docker compose up -d
 ```

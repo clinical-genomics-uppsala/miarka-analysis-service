@@ -1,0 +1,18 @@
+services:
+  miarka_analysis_service:
+    build:
+      context: .
+      dockerfile: miarka-analysis-service.Dockerfile
+    restart: no
+    ports:
+      - 8080:8080
+    entrypoint: ["sh", "-c", "miarka-analysis-ws", "--config", "./config/", "--debug"]
+    volumes:
+      - ./miarka_analysis:/opt/miarka-analysis-service/miarka_analysis
+      - ./config/app.config:/etc/arteria/miarka_analysis/app.config
+      - ./config/logger.config:/etc/arteria/miarka_analysis/logger.config
+    networks:
+      - private
+
+networks:
+  private:
